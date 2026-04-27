@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Print & Service — Типография Астана</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0e0e0e;
+  --paper:  #f4f0e8;
+  --red:    #c8001e;
+  --red2:   #9e0016;
+  --beige:  #ede8dc;
+  --line:   #0e0e0e;
+  --muted:  #6b6558;
+  --white:  #fafaf7;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'DM Mono', monospace;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* ── CUSTOM CURSOR ─── */
+a, button { cursor: crosshair; }
+
+/* ── HEADER ───────── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--ink);
+  height: 56px;
+  display: flex;
+  align-items: stretch;
+  border-bottom: 3px solid var(--red);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  border-right: 2px solid rgba(255,255,255,0.1);
+  text-decoration: none;
+}
+.header-logo-text {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.header-logo-text em { color: var(--red); font-style: normal; }
+
+.header-ticker {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 1.5rem;
+}
+.ticker-track {
+  display: flex;
+  gap: 3rem;
+  animation: ticker 18s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.ticker-track span.red { color: var(--red); }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+.header-nav {
+  display: flex;
+  align-items: stretch;
+  border-left: 2px solid rgba(255,255,255,0.1);
+}
+.header-nav a {
+  display: flex;
+  align-items: center;
+  padding: 0 1.4rem;
+  text-decoration: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  border-left: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.header-nav a:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.header-nav .nav-cta {
+  background: var(--red);
+  color: #fff;
+  font-weight: 500;
+  border-left: none;
+}
+.header-nav .nav-cta:hover { background: var(--red2); }
+
+.burger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.2rem;
+  background: none;
+  border: none;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  cursor: crosshair;
+  flex-direction: column;
+  gap: 4px;
+}
+.burger-btn span { width: 20px; height: 2px; background: #fff; display: block; }
+
+/* ── MOBILE NAV ─── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 56px; left:0; right:0;
+  background: var(--ink);
+  z-index: 199;
+  flex-direction: column;
+  border-bottom: 3px solid var(--red);
+}
+.mobile-nav.open { display:flex; }
+.mobile-nav a {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.mobile-nav a:last-child { background: var(--red); color: #fff; }
+
+/* ── HERO ─────────── */
+#hero {
+  min-height: 100vh;
+  background: var(--paper);
+  padding-top: 56px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-topbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+.hero-topbar-cell {
+  padding: 0.8rem 2rem;
+  border-right: 2px solid var(--ink);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hero-topbar-cell:last-child { border-right: none; }
+.hero-topbar-cell strong { color: var(--ink); font-weight: 500; }
+
+.hero-main {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.hero-left {
+  padding: 5rem 4rem 4rem 4vw;
+  border-right: 2px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.hero-issue {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 2rem;
+  font-family: 'DM Mono', monospace;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 3rem;
+}
+.hero-title .block-red {
+  display: block;
+  color: var(--red);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 420px;
+  letter-spacing: 0.02em;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--red); border-color: var(--red); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-stat-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2rem;
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+  position: relative;
+}
+.hero-stat-block:last-child { border-bottom: none; }
+
+.stat-bg-num {
+  position: absolute;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 7rem;
+  color: rgba(0,0,0,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.stat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.stat-num {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--ink);
+  position: relative;
+}
+.stat-num.red { color: var(--red); }
+.stat-desc {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  letter-spacing: 0.06em;
+}
+
+.hero-bottom {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.hero-bottom-cell {
+  padding: 1.2rem 2rem;
+  border-right: 2px solid var(--ink);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-bottom-cell:last-child { border-right: none; }
+.hero-bottom-cell a { color: inherit; text-decoration: none; }
+.hero-bottom-cell a:hover { color: var(--red); }
+
+/* ── MARQUEE STRIP ─── */
+.marquee-strip {
+  background: var(--red);
+  overflow: hidden;
+  padding: 0.75rem 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.marquee-inner {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+.marquee-inner span {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+.marquee-inner span.dot { color: rgba(255,255,255,0.4); }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── SECTION BASE ─── */
+.section-wrap { padding: 0 0; }
+.grid-section {
+  display: grid;
+  border-top: 2px solid var(--ink);
+}
+
+.section-label-vert {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 2rem 1.2rem;
+  border-right: 2px solid var(--ink);
+}
+
+/* ── ADVANTAGES ──── */
+#advantages {
+  background: var(--beige);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+.adv-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+.adv-header-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--ink);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 1.5rem 0;
+}
+.adv-header-title {
+  padding: 2rem 4rem;
+}
+.adv-header-title .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.adv-header-title h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.adv-grid-wrap {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.adv-item {
+  padding: 2.5rem 2rem;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.adv-item:nth-child(3), .adv-item:nth-child(6) { border-right: none; }
+.adv-item:nth-child(4), .adv-item:nth-child(5), .adv-item:nth-child(6) { border-bottom: none; }
+.adv-item:hover { background: rgba(200,0,30,0.04); }
+
+.adv-num {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  color: rgba(0,0,0,0.06);
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+}
+.adv-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.adv-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* ── SERVICES ──────── */
+#services {
+  background: var(--white);
+  border-bottom: 2px solid var(--ink);
+}
+
+.srv-header {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  border-bottom: 2px solid var(--ink);
+  align-items: stretch;
+}
+.srv-header-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+.srv-header-text {
+  padding: 2rem 3rem;
+}
+.srv-header-text .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.srv-header-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.srv-list {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.srv-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.srv-item {
+  padding: 2.5rem 3rem;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background 0.2s;
+}
+.srv-item:nth-child(even) { border-right: none; }
+.srv-item:nth-child(5), .srv-item:nth-child(6) { border-bottom: none; }
+.srv-item:hover { background: var(--beige); }
+
+.srv-index {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.srv-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.srv-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.7;
+  flex: 1;
+  letter-spacing: 0.02em;
+}
+.srv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 0.2rem;
+  width: fit-content;
+  transition: color 0.2s, border-color 0.2s;
+}
+.srv-link:hover { color: var(--red); border-color: var(--red); }
+
+/* ── PORTFOLIO ──────── */
+#portfolio {
+  background: var(--ink);
+  border-bottom: 2px solid var(--red);
+}
+
+.port-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 2px solid rgba(255,255,255,0.12);
+}
+.port-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+.port-title-wrap {
+  padding: 2rem 3rem;
+}
+.port-title-wrap .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.port-title-wrap h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.port-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.port-item {
+  aspect-ratio: 5/4;
+  border-right: 2px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+  transition: background 0.3s;
+}
+.port-item:nth-child(3n) { border-right: none; }
+.port-item:nth-child(4), .port-item:nth-child(5), .port-item:nth-child(6) { border-bottom: none; }
+
+.port-item:nth-child(1) { background: #161616; }
+.port-item:nth-child(2) { background: #1a1012; }
+.port-item:nth-child(3) { background: #0f0f18; }
+.port-item:nth-child(4) { background: #12160e; }
+.port-item:nth-child(5) { background: #16100c; }
+.port-item:nth-child(6) { background: #0c1216; }
+
+.port-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.port-item:hover::before { opacity: 0.1; }
+
+.port-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+.port-icon { font-size: 2.8rem; opacity: 0.4; }
+.port-cat {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.port-note {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+  padding: 0 2rem;
+  letter-spacing: 0.06em;
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── PRICES ─────────── */
+#prices {
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+}
+
+.price-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+.price-header-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.price-header-text {
+  padding: 2rem 3rem;
+}
+.price-header-text .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.price-header-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.price-table-wrap {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.price-table thead tr {
+  background: var(--ink);
+}
+.price-table thead th {
+  padding: 0.9rem 2rem;
+  text-align: left;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-weight: 400;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.price-table thead th:last-child { border-right: none; }
+.price-table tbody tr {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: background 0.15s;
+}
+.price-table tbody tr:hover { background: rgba(200,0,30,0.04); }
+.price-table tbody td {
+  padding: 1.2rem 2rem;
+  font-size: 0.82rem;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  letter-spacing: 0.02em;
+}
+.price-table tbody td:last-child { border-right: none; }
+.price-table .product { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; }
+.price-table .amount {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--red);
+}
+.price-note {
+  padding: 1.2rem 3rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+.price-note a { color: var(--red); text-decoration: none; font-weight: 500; }
+
+/* ── REVIEWS ─────────── */
+#reviews {
+  background: var(--beige);
+  border-bottom: 2px solid var(--ink);
+}
+
+.rev-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+.rev-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rev-title-wrap {
+  padding: 2rem 3rem;
+}
+.rev-title-wrap .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.rev-title-wrap h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.rev-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.rev-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.rev-item {
+  padding: 2.5rem 2.5rem;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.rev-item:nth-child(3) { border-right: none; }
+.rev-item:nth-child(4) { border-bottom: none; }
+.rev-item:nth-child(5) { border-bottom: none; }
+.rev-item.wide {
+  grid-column: span 2;
+  border-right: none;
+}
+.rev-stars {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.rev-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.rev-author {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rev-author strong { color: var(--ink); font-weight: 500; }
+
+/* ── ABOUT ─────────── */
+#about {
+  background: var(--ink);
+  color: #fff;
+  border-bottom: 2px solid var(--red);
+}
+
+.about-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+.about-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-title-wrap {
+  padding: 2rem 3rem;
+}
+.about-title-wrap .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.about-title-wrap h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.about-body {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+}
+.about-spacer { border-right: 2px solid rgba(255,255,255,0.1); }
+.about-text-col {
+  padding: 3rem;
+  border-right: 2px solid rgba(255,255,255,0.1);
+}
+.about-text-col p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.85;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.02em;
+}
+.about-text-col p:last-child { margin-bottom: 0; }
+
+.about-facts-col {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.about-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.about-fact:last-child { border-bottom: none; padding-bottom: 0; }
+.about-fact-num {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--red);
+  line-height: 1;
+}
+.about-fact-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── CONTACTS ────────── */
+#contacts {
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+}
+
+.cont-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+.cont-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cont-title-wrap {
+  padding: 2rem 3rem;
+}
+.cont-title-wrap .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.cont-title-wrap h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.cont-body {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+}
+.cont-spacer { border-right: 2px solid var(--ink); }
+.cont-info {
+  padding: 3rem;
+  border-right: 2px solid var(--ink);
+}
+.cont-entry {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.cont-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.cont-entry-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.4rem;
+}
+.cont-entry-value {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+.cont-entry-value a { color: inherit; text-decoration: none; }
+.cont-entry-value a:hover { color: var(--red); }
+
+.cont-cta {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.cont-cta-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.cont-cta-headline em { color: var(--red); font-style: italic; }
+.cont-cta p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+.cont-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--red);
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1.1rem 2rem;
+  text-decoration: none;
+  border: 2px solid var(--red);
+  transition: all 0.2s;
+  width: fit-content;
+}
+.cont-btn-wa:hover { background: transparent; color: var(--red); }
+.cont-btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1.1rem 2rem;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  transition: all 0.2s;
+  width: fit-content;
+}
+.cont-btn-call:hover { background: var(--ink); color: var(--paper); }
+
+/* ── FOOTER ────────── */
+footer {
+  background: #0a0a0a;
+  border-top: 3px solid var(--red);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  gap: 2rem;
+}
+.footer-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.footer-logo em { color: var(--red); font-style: normal; }
+.footer-copy {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+}
+.footer-links a {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--red); }
+
+/* ── FLOATING WA ───── */
+.float-wa {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 150;
+  background: var(--red);
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.4rem;
+  border: 2px solid #fff;
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: all 0.2s;
+}
+.float-wa:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--ink); }
+
+/* ── REVEAL ─────────── */
+.reveal { opacity:0; transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── RESPONSIVE ──────── */
+@media (max-width: 1100px) {
+  .hero-main { grid-template-columns: 1fr 320px; }
+}
+@media (max-width: 900px) {
+  .header-nav { display: none; }
+  .burger-btn { display: flex; }
+  .hero-main { grid-template-columns: 1fr; }
+  .hero-right { flex-direction: row; }
+  .hero-stat-block { border-bottom: none; border-right: 2px solid var(--ink); }
+  .hero-stat-block:last-child { border-right: none; }
+  .hero-left { padding: 3rem 2rem 2rem; }
+  .adv-grid { grid-template-columns: repeat(2,1fr); }
+  .adv-item:nth-child(2) { border-right: none; }
+  .adv-item:nth-child(3) { border-right: 2px solid var(--ink); }
+  .srv-items { grid-template-columns: 1fr; }
+  .srv-item { border-right: none; }
+  .port-grid { grid-template-columns: repeat(2,1fr); }
+  .port-item:nth-child(2n) { border-right: none; }
+  .port-item:nth-child(3n) { border-right: 2px solid rgba(255,255,255,0.1); }
+  .rev-items { grid-template-columns: 1fr; }
+  .rev-item { border-right: none; }
+  .rev-item.wide { grid-column: span 1; }
+  .about-body { grid-template-columns: 80px 1fr; }
+  .about-facts-col { display: none; }
+  .cont-body { grid-template-columns: 80px 1fr; }
+  .cont-cta { display: none; }
+  footer { grid-template-columns: 1fr; text-align: center; }
+  .footer-links { justify-content: center; }
+  .hero-bottom { grid-template-columns: repeat(2,1fr); }
+  .hero-topbar { grid-template-columns: 1fr 1fr; }
+  .hero-topbar-cell:last-child { display: none; }
+  .prices-grid { grid-template-columns: 80px 1fr; }
+}
+@media (max-width: 600px) {
+  .hero-right { flex-direction: column; }
+  .hero-stat-block { border-right: none; border-bottom: 2px solid var(--ink); }
+  .adv-grid { grid-template-columns: 1fr; }
+  .adv-item { border-right: none; }
+  .port-grid { grid-template-columns: 1fr; }
+  .hero-bottom { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="header-logo">
+    <span class="header-logo-text">Print<em>&</em>Service</span>
+  </a>
+  <div class="header-ticker">
+    <div class="ticker-track">
+      <span class="red">●</span>
+      <span>Визитки</span><span class="dot">·</span>
+      <span>Баннеры</span><span class="dot">·</span>
+      <span>Книги и брошюры</span><span class="dot">·</span>
+      <span>Сувенирная продукция</span><span class="dot">·</span>
+      <span>Листовки</span><span class="dot">·</span>
+      <span>Дизайн-макеты</span><span class="dot">·</span>
+      <span class="red">Срок от 1 дня</span><span class="dot">·</span>
+      <span>Астана — Мангілік Ел 29/2</span><span class="dot">·</span>
+      <span class="red">●</span>
+      <span>Визитки</span><span class="dot">·</span>
+      <span>Баннеры</span><span class="dot">·</span>
+      <span>Книги и брошюры</span><span class="dot">·</span>
+      <span>Сувенирная продукция</span><span class="dot">·</span>
+      <span>Листовки</span><span class="dot">·</span>
+      <span>Дизайн-макеты</span><span class="dot">·</span>
+      <span class="red">Срок от 1 дня</span><span class="dot">·</span>
+      <span>Астана — Мангілік Ел 29/2</span><span class="dot">·</span>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <a href="#services">Услуги</a>
+    <a href="#portfolio">Работы</a>
+    <a href="#about">О нас</a>
+    <a href="#contacts">Контакты</a>
+    <a href="https://wa.me/77765482877" target="_blank" class="nav-cta">Заказать →</a>
+  </nav>
+  <button class="burger-btn" id="burger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="toggleMobile()">Услуги</a>
+  <a href="#portfolio" onclick="toggleMobile()">Работы</a>
+  <a href="#about" onclick="toggleMobile()">О нас</a>
+  <a href="#contacts" onclick="toggleMobile()">Контакты</a>
+  <a href="https://wa.me/77765482877" target="_blank" onclick="toggleMobile()">Написать в WhatsApp →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-topbar">
+    <div class="hero-topbar-cell">
+      <span>Режим работы:</span>
+      <strong>Без выходных, 09:00–20:00</strong>
+    </div>
+    <div class="hero-topbar-cell">
+      <span>Адрес:</span>
+      <strong>Астана, Мангілік Ел 29/2</strong>
+    </div>
+    <div class="hero-topbar-cell">
+      <span>Телефон:</span>
+      <strong><a href="tel:+77765482877" style="color:inherit;text-decoration:none">+7 776 548-28-77</a></strong>
+    </div>
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-left">
+      <div>
+        <div class="hero-issue">— Типография в Астане · Основана 2014</div>
+        <h1 class="hero-title">
+          Ваша<br>
+          <span class="block-red">печать,</span>
+          ваш стиль
+        </h1>
+        <p class="hero-sub">
+          Визитки, баннеры, книги, сувенирная продукция —<br>
+          всё, что делает ваш бизнес заметным. Срок от одного дня,<br>
+          цены без скрытых доплат.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <a href="tel:+77765482877" class="btn-primary">→ Позвонить</a>
+        <a href="https://wa.me/77765482877" target="_blank" class="btn-secondary">WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-block">
+        <div class="stat-bg-num">10</div>
+        <div class="stat-label">Лет опыта</div>
+        <div class="stat-num red">10+</div>
+        <div class="stat-desc">на рынке Астаны</div>
+      </div>
+      <div class="hero-stat-block">
+        <div class="stat-bg-num">500</div>
+        <div class="stat-label">Клиентов</div>
+        <div class="stat-num">500+</div>
+        <div class="stat-desc">довольных заказчиков</div>
+      </div>
+      <div class="hero-stat-block">
+        <div class="stat-bg-num">1</div>
+        <div class="stat-label">Срочность</div>
+        <div class="stat-num red">1</div>
+        <div class="stat-desc">день от заказа</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-bottom-cell">
+      <a href="#services">Услуги ↓</a>
+    </div>
+    <div class="hero-bottom-cell">
+      <a href="#portfolio">Работы ↓</a>
+    </div>
+    <div class="hero-bottom-cell">
+      <a href="#prices">Цены ↓</a>
+    </div>
+    <div class="hero-bottom-cell">
+      <a href="#contacts">Контакты ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Полиграфия</span><span class="dot">◆</span>
+    <span>Визитки</span><span class="dot">◆</span>
+    <span>Баннеры</span><span class="dot">◆</span>
+    <span>Книги</span><span class="dot">◆</span>
+    <span>Сувениры</span><span class="dot">◆</span>
+    <span>Дизайн</span><span class="dot">◆</span>
+    <span>Листовки</span><span class="dot">◆</span>
+    <span>Срочная печать</span><span class="dot">◆</span>
+    <span>Полиграфия</span><span class="dot">◆</span>
+    <span>Визитки</span><span class="dot">◆</span>
+    <span>Баннеры</span><span class="dot">◆</span>
+    <span>Книги</span><span class="dot">◆</span>
+    <span>Сувениры</span><span class="dot">◆</span>
+    <span>Дизайн</span><span class="dot">◆</span>
+    <span>Листовки</span><span class="dot">◆</span>
+    <span>Срочная печать</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- ADVANTAGES -->
+<section id="advantages">
+  <div class="adv-header reveal">
+    <div class="adv-header-label">Почему мы</div>
+    <div class="adv-header-title">
+      <div class="eyebrow">— Наши преимущества</div>
+      <h2>Работаем так,<br>чтобы вы возвращались</h2>
+    </div>
+  </div>
+  <div class="adv-grid-wrap">
+    <div></div>
+    <div class="adv-grid">
+      <div class="adv-item reveal">
+        <span class="adv-num">01</span>
+        <div class="adv-title">Срок от 1 дня</div>
+        <div class="adv-desc">Срочные заказы выполняем в день обращения. Готово вовремя — всегда, без компромиссов.</div>
+      </div>
+      <div class="adv-item reveal">
+        <span class="adv-num">02</span>
+        <div class="adv-title">Доступные цены</div>
+        <div class="adv-desc">Прозрачное ценообразование без скрытых платежей. Работаем с любым бюджетом.</div>
+      </div>
+      <div class="adv-item reveal">
+        <span class="adv-num">03</span>
+        <div class="adv-title">Любые тиражи</div>
+        <div class="adv-desc">От 1 экземпляра до массовых тиражей — справляемся с любым объёмом без потери качества.</div>
+      </div>
+      <div class="adv-item reveal">
+        <span class="adv-num">04</span>
+        <div class="adv-title">Дизайн под ключ</div>
+        <div class="adv-desc">Разработаем дизайн с нуля или доработаем ваш макет. Всё в одном месте.</div>
+      </div>
+      <div class="adv-item reveal">
+        <span class="adv-num">05</span>
+        <div class="adv-title">Без выходных</div>
+        <div class="adv-desc">Работаем каждый день. Принимаем заказы в любое удобное для вас время.</div>
+      </div>
+      <div class="adv-item reveal">
+        <span class="adv-num">06</span>
+        <div class="adv-title">Опыт 10+ лет</div>
+        <div class="adv-desc">Сотни довольных клиентов и тысячи выполненных проектов. Репутация важнее скидок.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="srv-header reveal">
+    <div class="srv-header-label">Услуги</div>
+    <div class="srv-header-text">
+      <div class="eyebrow">— Что мы делаем</div>
+      <h2>Полный цикл<br>полиграфии</h2>
+    </div>
+  </div>
+  <div class="srv-list">
+    <div></div>
+    <div class="srv-items">
+      <div class="srv-item reveal">
+        <div class="srv-index">001 / Визитки</div>
+        <div class="srv-name">Визитки</div>
+        <p class="srv-desc">Стандартные, матовые, глянцевые, ламинированные. Любой тираж — быстро и аккуратно.</p>
+        <a href="https://wa.me/77765482877?text=Хочу заказать визитки" target="_blank" class="srv-link">Заказать →</a>
+      </div>
+      <div class="srv-item reveal">
+        <div class="srv-index">002 / Баннеры</div>
+        <div class="srv-name">Баннеры</div>
+        <p class="srv-desc">Уличные, интерьерные, любых размеров. Печать на баннерной ткани и ПВХ.</p>
+        <a href="https://wa.me/77765482877?text=Хочу заказать баннер" target="_blank" class="srv-link">Заказать →</a>
+      </div>
+      <div class="srv-item reveal">
+        <div class="srv-index">003 / Книги</div>
+        <div class="srv-name">Книги</div>
+        <p class="srv-desc">Брошюры, каталоги, журналы — мягкий и твёрдый переплёт на выбор.</p>
+        <a href="https://wa.me/77765482877?text=Хочу заказать книгу" target="_blank" class="srv-link">Заказать →</a>
+      </div>
+      <div class="srv-item reveal">
+        <div class="srv-index">004 / Сувениры</div>
+        <div class="srv-name">Сувениры</div>
+        <p class="srv-desc">Кружки, футболки, блокноты, ручки — корпоративные подарки с логотипом.</p>
+        <a href="https://wa.me/77765482877?text=Хочу заказать сувениры" target="_blank" class="srv-link">Заказать →</a>
+      </div>
+      <div class="srv-item reveal">
+        <div class="srv-index">005 / Листовки</div>
+        <div class="srv-name">Листовки</div>
+        <p class="srv-desc">Флаеры, буклеты, листовки для рекламных акций и промо-кампаний.</p>
+        <a href="https://wa.me/77765482877?text=Хочу заказать листовки" target="_blank" class="srv-link">Заказать →</a>
+      </div>
+      <div class="srv-item reveal">
+        <div class="srv-index">006 / Дизайн</div>
+        <div class="srv-name">Дизайн</div>
+        <p class="srv-desc">Разработка макетов, логотипов, фирменного стиля от профессиональных дизайнеров.</p>
+        <a href="https://wa.me/77765482877?text=Хочу заказать дизайн" target="_blank" class="srv-link">Заказать →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="port-header reveal">
+    <div class="port-label">Работы</div>
+    <div class="port-title-wrap">
+      <div class="eyebrow">— Примеры работ</div>
+      <h2>Проекты,<br>которыми гордимся</h2>
+    </div>
+  </div>
+  <div class="port-grid reveal">
+    <div class="port-item">
+      <div class="port-placeholder">
+        <div class="port-icon">🪪</div>
+        <div class="port-cat">Визитки</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <div class="port-placeholder">
+        <div class="port-icon">🪟</div>
+        <div class="port-cat">Баннеры</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <div class="port-placeholder">
+        <div class="port-icon">📚</div>
+        <div class="port-cat">Брошюры</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <div class="port-placeholder">
+        <div class="port-icon">🎁</div>
+        <div class="port-cat">Сувениры</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <div class="port-placeholder">
+        <div class="port-icon">📄</div>
+        <div class="port-cat">Листовки</div>
+      </div>
+    </div>
+    <div class="port-item">
+      <div class="port-placeholder">
+        <div class="port-icon">✏️</div>
+        <div class="port-cat">Дизайн</div>
+      </div>
+    </div>
+  </div>
+  <p class="port-note" style="padding:1rem 3rem; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase;">* Замените блоки-заглушки реальными фотографиями ваших работ</p>
+</section>
+
+<!-- PRICES -->
+<section id="prices">
+  <div class="price-header reveal">
+    <div class="price-header-label">Цены</div>
+    <div class="price-header-text">
+      <div class="eyebrow">— Стоимость</div>
+      <h2>Примерные<br>цены</h2>
+    </div>
+  </div>
+  <div class="price-table-wrap reveal">
+    <div></div>
+    <div>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Услуга</th>
+            <th>От</th>
+            <th>Единица</th>
+            <th>Примечание</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product">Визитки</td>
+            <td class="amount">5 000 ₸</td>
+            <td>100 шт.</td>
+            <td>Матовые, глянцевые, ламинат</td>
+          </tr>
+          <tr>
+            <td class="product">Баннеры</td>
+            <td class="amount">8 000 ₸</td>
+            <td>1 м²</td>
+            <td>ПВХ, ткань, уличные/интерьерные</td>
+          </tr>
+          <tr>
+            <td class="product">Листовки</td>
+            <td class="amount">3 000 ₸</td>
+            <td>100 шт.</td>
+            <td>А5, А4, полноцвет</td>
+          </tr>
+          <tr>
+            <td class="product">Брошюры</td>
+            <td class="amount">1 500 ₸</td>
+            <td>1 шт.</td>
+            <td>Мягкий/твёрдый переплёт</td>
+          </tr>
+          <tr>
+            <td class="product">Сувениры</td>
+            <td class="amount">2 500 ₸</td>
+            <td>1 шт.</td>
+            <td>Кружки, футболки, блокноты</td>
+          </tr>
+          <tr>
+            <td class="product">Дизайн-макет</td>
+            <td class="amount">5 000 ₸</td>
+            <td>1 макет</td>
+            <td>Разработка с нуля или доработка</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="price-note">
+        Цены ориентировочные. Точный расчёт — <a href="https://wa.me/77765482877" target="_blank">напишите в WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="rev-header reveal">
+    <div class="rev-label">Отзывы</div>
+    <div class="rev-title-wrap">
+      <div class="eyebrow">— Что говорят клиенты</div>
+      <h2>Нам доверяют,<br>нас рекомендуют</h2>
+    </div>
+  </div>
+  <div class="rev-grid">
+    <div></div>
+    <div class="rev-items">
+      <div class="rev-item reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Заказывала визитки — получила быстро, качество отличное. Менеджер помог с дизайном. Буду заказывать ещё!»</p>
+        <div class="rev-author"><strong>Айгерим К.</strong></div>
+      </div>
+      <div class="rev-item reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Печатаем здесь баннеры для нашей компании уже 3 года. Никогда не подводят — ни по срокам, ни по качеству.»</p>
+        <div class="rev-author"><strong>Серик М.</strong> — ТОО АлтынТрейд</div>
+      </div>
+      <div class="rev-item reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Срочно нужны были буклеты для выставки. Выполнили за 1 день. Выглядело очень профессионально!»</p>
+        <div class="rev-author"><strong>Наталья В.</strong></div>
+      </div>
+      <div class="rev-item wide reveal">
+        <div class="rev-stars">★★★★☆</div>
+        <p class="rev-text">«Заказывали сувенирную продукцию для корпоратива. Всё сделали вовремя и красиво. Коллеги были в восторге.»</p>
+        <div class="rev-author"><strong>Дамир А.</strong></div>
+      </div>
+      <div class="rev-item reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">«Отличная типография! Цены разумные, персонал приятный. Рекомендую всем, кто ищет печать в Астане.»</p>
+        <div class="rev-author"><strong>Инна Р.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-header reveal">
+    <div class="about-label">О нас</div>
+    <div class="about-title-wrap">
+      <div class="eyebrow">— О компании</div>
+      <h2>Print&Service —<br>ваша типография</h2>
+    </div>
+  </div>
+  <div class="about-body">
+    <div class="about-spacer"></div>
+    <div class="about-text-col reveal">
+      <p>Мы — команда профессионалов, которая уже более 10 лет помогает бизнесу и частным клиентам выглядеть достойно. Наша типография оснащена современным оборудованием, которое позволяет выполнять заказы любой сложности.</p>
+      <p>Работаем без выходных и принимаем срочные заказы. Если вам нужен результат сегодня — мы сделаем всё возможное, чтобы это произошло.</p>
+      <p>Наше главное отличие — ответственный подход и честное общение с клиентом. Вы всегда знаете, на каком этапе ваш заказ и когда он будет готов.</p>
+      <div style="margin-top:2rem;">
+        <a href="https://wa.me/77765482877" target="_blank" class="btn-primary" style="background:var(--red);border-color:var(--red);color:#fff;margin-top:1rem;display:inline-flex;">→ Обсудить проект</a>
+      </div>
+    </div>
+    <div class="about-facts-col reveal">
+      <div class="about-fact">
+        <div class="about-fact-num">10+</div>
+        <div class="about-fact-label">Лет на рынке полиграфии</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-num">500+</div>
+        <div class="about-fact-label">Постоянных клиентов</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-num">7/7</div>
+        <div class="about-fact-label">Дней в неделю без выходных</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-num">1 день</div>
+        <div class="about-fact-label">Минимальный срок выполнения</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <div class="cont-header reveal">
+    <div class="cont-label">Контакты</div>
+    <div class="cont-title-wrap">
+      <div class="eyebrow">— Свяжитесь с нами</div>
+      <h2>Готовы<br>к разговору</h2>
+    </div>
+  </div>
+  <div class="cont-body">
+    <div class="cont-spacer"></div>
+    <div class="cont-info reveal">
+      <div class="cont-entry">
+        <div class="cont-entry-label">Телефон</div>
+        <div class="cont-entry-value"><a href="tel:+77765482877">+7 776 548-28-77</a></div>
+      </div>
+      <div class="cont-entry">
+        <div class="cont-entry-label">WhatsApp</div>
+        <div class="cont-entry-value"><a href="https://wa.me/77765482877" target="_blank">+7 776 548-28-77</a></div>
+      </div>
+      <div class="cont-entry">
+        <div class="cont-entry-label">Instagram</div>
+        <div class="cont-entry-value"><a href="https://instagram.com/print8service" target="_blank">@print8service</a></div>
+      </div>
+      <div class="cont-entry">
+        <div class="cont-entry-label">Адрес</div>
+        <div class="cont-entry-value">Астана, Мангілік Ел 29/2</div>
+      </div>
+      <div class="cont-entry">
+        <div class="cont-entry-label">Режим работы</div>
+        <div class="cont-entry-value">Пн–Вс · 09:00–20:00</div>
+      </div>
+    </div>
+    <div class="cont-cta reveal">
+      <h3 class="cont-cta-headline">Начните с одного<br><em>сообщения</em></h3>
+      <p>Расскажите о своём проекте — мы ответим в течение нескольких минут и предложим лучшее решение по оптимальной цене.</p>
+      <a href="https://wa.me/77765482877?text=Здравствуйте! Хочу узнать подробности." target="_blank" class="cont-btn-wa">→ Написать в WhatsApp</a>
+      <a href="tel:+77765482877" class="cont-btn-call">→ Позвонить</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Print<em>&</em>Service</div>
+  <div class="footer-copy">© 2026 Print&Service · Астана</div>
+  <div class="footer-links">
+    <a href="tel:+77765482877">+7 776 548-28-77</a>
+    <a href="https://wa.me/77765482877" target="_blank">WhatsApp</a>
+    <a href="https://instagram.com/print8service" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/77765482877?text=Здравствуйте!" target="_blank" class="float-wa" title="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.12 1.523 5.858L0 24l6.278-1.504A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.853 9.853 0 01-5.022-1.374l-.36-.214-3.727.893.923-3.627-.235-.373A9.853 9.853 0 012.118 12C2.118 6.53 6.53 2.118 12 2.118S21.882 6.53 21.882 12 17.47 21.882 12 21.882z"/></svg>
+</a>
+
+<script>
+  function toggleMobile() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('burger');
+    if (!nav.contains(e.target) && !btn.contains(e.target)) nav.classList.remove('open');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

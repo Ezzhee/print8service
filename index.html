@@ -1128,6 +1128,265 @@ footer {
 .reveal { opacity:0; transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity:1; transform:none; }
 
+/* ── REPAIR SECTION ──── */
+#repair {
+  background: var(--ink);
+  color: #fff;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+.repair-header {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  align-items: stretch;
+}
+.repair-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+.repair-header-text {
+  padding: 2rem 3rem;
+}
+.repair-header-text .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.repair-header-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.repair-badge {
+  display: flex;
+  align-items: center;
+  padding: 0 2.5rem;
+  border-left: 2px solid rgba(255,255,255,0.1);
+}
+.repair-badge-inner {
+  background: var(--red);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.repair-body {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.repair-spacer { border-right: 2px solid rgba(255,255,255,0.1); }
+.repair-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.repair-col {
+  padding: 2.5rem 3rem;
+  border-right: 2px solid rgba(255,255,255,0.1);
+}
+.repair-col:last-child { border-right: none; }
+.repair-col-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.repair-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+.repair-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+.repair-list li::before {
+  content: '→';
+  color: var(--red);
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  margin-top: 0.05rem;
+}
+.repair-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  font-style: italic;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+.repair-cta-col {
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.repair-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.repair-price-block:last-of-type { border-bottom: none; }
+.repair-price-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.repair-price-val {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--red);
+  line-height: 1;
+}
+.repair-price-desc {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.03em;
+}
+
+/* ── IT SECTION ──────── */
+#it-services {
+  background: var(--white);
+  border-bottom: 2px solid var(--ink);
+}
+.it-header {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  border-bottom: 2px solid var(--ink);
+  align-items: stretch;
+}
+.it-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+.it-header-text {
+  padding: 2rem 3rem;
+}
+.it-header-text .eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.it-header-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.it-header-tagline {
+  display: flex;
+  align-items: center;
+  padding: 0 2.5rem;
+  border-left: 2px solid var(--ink);
+  max-width: 260px;
+}
+.it-header-tagline p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.it-body {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.it-spacer { border-right: 2px solid var(--ink); }
+.it-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.it-item {
+  padding: 2rem 2rem;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transition: background 0.2s;
+}
+.it-item:nth-child(4n) { border-right: none; }
+.it-item:nth-child(5), .it-item:nth-child(6), .it-item:nth-child(7), .it-item:nth-child(8) { border-bottom: none; }
+.it-item:hover { background: var(--beige); }
+.it-num {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  color: rgba(0,0,0,0.05);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.it-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.it-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+}
+.it-strip {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border-top: 2px solid var(--ink);
+  background: var(--beige);
+}
+.it-strip-spacer { border-right: 2px solid var(--ink); }
+.it-strip-inner {
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.it-strip-text {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+.it-strip-text strong { color: var(--ink); font-style: normal; }
+
 /* ── RESPONSIVE ──────── */
 @media (max-width: 1100px) {
   .hero-main { grid-template-columns: 1fr 320px; }
@@ -1148,7 +1407,16 @@ footer {
   .port-grid { grid-template-columns: repeat(2,1fr); }
   .port-item:nth-child(2n) { border-right: none; }
   .port-item:nth-child(3n) { border-right: 2px solid rgba(255,255,255,0.1); }
-  .rev-items { grid-template-columns: 1fr; }
+  .it-grid { grid-template-columns: repeat(2,1fr); }
+  .it-item:nth-child(2n) { border-right: none; }
+  .it-item:nth-child(4n) { border-right: 2px solid var(--ink); }
+  .it-item:nth-child(4n) { border-right: none; }
+  .repair-cols { grid-template-columns: 1fr; }
+  .repair-col { border-right: none; border-bottom: 2px solid rgba(255,255,255,0.1); }
+  .repair-header { grid-template-columns: 80px 1fr; }
+  .repair-badge { display: none; }
+  .it-header { grid-template-columns: 80px 1fr; }
+  .it-header-tagline { display: none; }
   .rev-item { border-right: none; }
   .rev-item.wide { grid-column: span 1; }
   .about-body { grid-template-columns: 80px 1fr; }
@@ -1202,9 +1470,10 @@ footer {
     </div>
   </div>
   <nav class="header-nav">
-    <a href="#services">Услуги</a>
+    <a href="#services">Печать</a>
+    <a href="#repair">Ремонт</a>
+    <a href="#it-services">IT</a>
     <a href="#portfolio">Работы</a>
-    <a href="#about">О нас</a>
     <a href="#contacts">Контакты</a>
     <a href="https://wa.me/77765482877" target="_blank" class="nav-cta">Заказать →</a>
   </nav>
@@ -1214,7 +1483,9 @@ footer {
 </header>
 
 <div class="mobile-nav" id="mobileNav">
-  <a href="#services" onclick="toggleMobile()">Услуги</a>
+  <a href="#services" onclick="toggleMobile()">Печать</a>
+  <a href="#repair" onclick="toggleMobile()">Ремонт принтеров</a>
+  <a href="#it-services" onclick="toggleMobile()">IT-услуги</a>
   <a href="#portfolio" onclick="toggleMobile()">Работы</a>
   <a href="#about" onclick="toggleMobile()">О нас</a>
   <a href="#contacts" onclick="toggleMobile()">Контакты</a>
@@ -1305,16 +1576,20 @@ footer {
     <span>Книги</span><span class="dot">◆</span>
     <span>Сувениры</span><span class="dot">◆</span>
     <span>Дизайн</span><span class="dot">◆</span>
-    <span>Листовки</span><span class="dot">◆</span>
-    <span>Срочная печать</span><span class="dot">◆</span>
+    <span>Ремонт принтеров</span><span class="dot">◆</span>
+    <span>Заправка картриджей</span><span class="dot">◆</span>
+    <span>IT-услуги</span><span class="dot">◆</span>
+    <span>Настройка сетей</span><span class="dot">◆</span>
     <span>Полиграфия</span><span class="dot">◆</span>
     <span>Визитки</span><span class="dot">◆</span>
     <span>Баннеры</span><span class="dot">◆</span>
     <span>Книги</span><span class="dot">◆</span>
     <span>Сувениры</span><span class="dot">◆</span>
     <span>Дизайн</span><span class="dot">◆</span>
-    <span>Листовки</span><span class="dot">◆</span>
-    <span>Срочная печать</span><span class="dot">◆</span>
+    <span>Ремонт принтеров</span><span class="dot">◆</span>
+    <span>Заправка картриджей</span><span class="dot">◆</span>
+    <span>IT-услуги</span><span class="dot">◆</span>
+    <span>Настройка сетей</span><span class="dot">◆</span>
   </div>
 </div>
 
@@ -1412,6 +1687,139 @@ footer {
         <p class="srv-desc">Разработка макетов, логотипов, фирменного стиля от профессиональных дизайнеров.</p>
         <a href="https://wa.me/77765482877?text=Хочу заказать дизайн" target="_blank" class="srv-link">Заказать →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPAIR -->
+<section id="repair">
+  <div class="repair-header reveal">
+    <div class="repair-label">Ремонт</div>
+    <div class="repair-header-text">
+      <div class="eyebrow">— Сервисный центр</div>
+      <h2>Ремонт принтеров<br>и МФУ</h2>
+    </div>
+    <div class="repair-badge">
+      <div class="repair-badge-inner">Диагностика бесплатно</div>
+    </div>
+  </div>
+  <div class="repair-body">
+    <div class="repair-spacer"></div>
+    <div class="repair-cols">
+      <div class="repair-col reveal">
+        <div class="repair-col-title">Что ремонтируем</div>
+        <ul class="repair-list">
+          <li>Лазерные и струйные принтеры — HP, Canon, Epson, Brother, Kyocera</li>
+          <li>МФУ (принтер + сканер + копир) любых конфигураций</li>
+          <li>Плоттеры и широкоформатные устройства</li>
+          <li>Замена картриджей, барабанов, роликов подачи</li>
+          <li>Чистка печатающих головок, устранение замятий</li>
+          <li>Прошивка и сброс счётчика страниц</li>
+        </ul>
+        <p class="repair-note">Работаем как с физическими лицами, так и с организациями на договорной основе.</p>
+      </div>
+      <div class="repair-col reveal">
+        <div class="repair-col-title">Заправка картриджей</div>
+        <ul class="repair-list">
+          <li>Заправка лазерных картриджей — ч/б и цветных</li>
+          <li>Заправка струйных картриджей всех форматов</li>
+          <li>Восстановление картриджей с заменой чипа</li>
+          <li>Совместимые картриджи в наличии</li>
+          <li>Срочная заправка — в день обращения</li>
+          <li>Выезд к клиенту при объёме от 5 картриджей</li>
+        </ul>
+        <div style="margin-top:1.5rem;">
+          <a href="https://wa.me/77765482877?text=Хочу сдать принтер в ремонт" target="_blank" class="btn-secondary" style="border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.8);">→ Записаться на ремонт</a>
+        </div>
+      </div>
+      <div class="repair-col reveal" style="border-top: 2px solid rgba(255,255,255,0.1); grid-column: span 2; display:flex; flex-direction:row; gap:3rem; padding:2rem 3rem; align-items:flex-start;">
+        <div class="repair-price-block" style="flex:1;border-bottom:none;">
+          <div class="repair-price-label">Диагностика</div>
+          <div class="repair-price-val">Бесплатно</div>
+          <div class="repair-price-desc">Определяем причину неисправности без предоплаты</div>
+        </div>
+        <div class="repair-price-block" style="flex:1;border-bottom:none;">
+          <div class="repair-price-label">Ремонт от</div>
+          <div class="repair-price-val">3 000 ₸</div>
+          <div class="repair-price-desc">В зависимости от сложности и модели устройства</div>
+        </div>
+        <div class="repair-price-block" style="flex:1;border-bottom:none;">
+          <div class="repair-price-label">Заправка картриджа от</div>
+          <div class="repair-price-val">1 500 ₸</div>
+          <div class="repair-price-desc">Лазерные ч/б. Цветные и струйные — уточняйте</div>
+        </div>
+        <div class="repair-price-block" style="flex:1;border-bottom:none;">
+          <div class="repair-price-label">Срок ремонта</div>
+          <div class="repair-price-val">1–3 дня</div>
+          <div class="repair-price-desc">Срочный ремонт в день обращения — по договорённости</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IT SERVICES -->
+<section id="it-services">
+  <div class="it-header reveal">
+    <div class="it-label">IT</div>
+    <div class="it-header-text">
+      <div class="eyebrow">— Информационные технологии</div>
+      <h2>IT-услуги<br>для бизнеса</h2>
+    </div>
+    <div class="it-header-tagline">
+      <p>Настройка, обслуживание и поддержка офисной техники и сетей — всё в одном месте.</p>
+    </div>
+  </div>
+  <div class="it-body">
+    <div class="it-spacer"></div>
+    <div class="it-grid">
+      <div class="it-item reveal">
+        <div class="it-num">01</div>
+        <div class="it-name">Настройка компьютеров</div>
+        <p class="it-desc">Установка Windows/Linux, драйверов, офисного ПО. Оптимизация и чистка системы.</p>
+      </div>
+      <div class="it-item reveal">
+        <div class="it-num">02</div>
+        <div class="it-name">Сетевое оборудование</div>
+        <p class="it-desc">Настройка роутеров, Wi-Fi точек доступа, прокладка кабельных сетей в офисе.</p>
+      </div>
+      <div class="it-item reveal">
+        <div class="it-num">03</div>
+        <div class="it-name">Подключение оргтехники</div>
+        <p class="it-desc">Сетевые принтеры, МФУ, сканеры — настройка и подключение к корпоративной сети.</p>
+      </div>
+      <div class="it-item reveal">
+        <div class="it-num">04</div>
+        <div class="it-name">Антивирус и защита</div>
+        <p class="it-desc">Установка и настройка антивирусного ПО, очистка от вирусов, резервное копирование данных.</p>
+      </div>
+      <div class="it-item reveal">
+        <div class="it-num">05</div>
+        <div class="it-name">Обслуживание офиса</div>
+        <p class="it-desc">Регулярное IT-обслуживание по договору — выезд специалиста по расписанию или заявке.</p>
+      </div>
+      <div class="it-item reveal">
+        <div class="it-num">06</div>
+        <div class="it-name">Восстановление данных</div>
+        <p class="it-desc">Восстановление утерянных файлов с жёстких дисков, флешек, карт памяти.</p>
+      </div>
+      <div class="it-item reveal">
+        <div class="it-num">07</div>
+        <div class="it-name">Удалённая поддержка</div>
+        <p class="it-desc">Решаем большинство проблем дистанционно — быстро, без выезда и лишних затрат.</p>
+      </div>
+      <div class="it-item reveal">
+        <div class="it-num">08</div>
+        <div class="it-name">Видеонаблюдение</div>
+        <p class="it-desc">Установка и настройка систем видеонаблюдения для офисов и торговых точек.</p>
+      </div>
+    </div>
+  </div>
+  <div class="it-strip">
+    <div class="it-strip-spacer"></div>
+    <div class="it-strip-inner">
+      <p class="it-strip-text"><strong>Выезд специалиста</strong> — в пределах Астаны. Возможно обслуживание по договору.</p>
+      <a href="https://wa.me/77765482877?text=Нужна IT-помощь" target="_blank" class="btn-primary">→ Вызвать специалиста</a>
     </div>
   </div>
 </section>
@@ -1523,6 +1931,24 @@ footer {
             <td class="amount">5 000 ₸</td>
             <td>1 макет</td>
             <td>Разработка с нуля или доработка</td>
+          </tr>
+          <tr>
+            <td class="product">Ремонт принтера</td>
+            <td class="amount">3 000 ₸</td>
+            <td>1 устройство</td>
+            <td>Диагностика бесплатно</td>
+          </tr>
+          <tr>
+            <td class="product">Заправка картриджа</td>
+            <td class="amount">1 500 ₸</td>
+            <td>1 картридж</td>
+            <td>Лазерные ч/б. Цветные — уточняйте</td>
+          </tr>
+          <tr>
+            <td class="product">IT-услуги / выезд</td>
+            <td class="amount">5 000 ₸</td>
+            <td>1 выезд</td>
+            <td>Настройка, подключение, поддержка</td>
           </tr>
         </tbody>
       </table>
